@@ -8,27 +8,27 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors - Teal & Aqua Theme */
-    --background: 201 56% 97%;
-    --foreground: 201 77% 23%;
+    /* Core Brand Colors - Modern Teal & Aqua Theme */
+    --background: 210 100% 98%;
+    --foreground: 201 84% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 201 77% 23%;
+    --card-foreground: 201 84% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 201 77% 23%;
+    --popover-foreground: 201 84% 15%;
 
-    /* Primary: Teal Blue */
-    --primary: 201 81% 40%;
+    /* Primary: Vibrant Teal */
+    --primary: 188 94% 43%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 201 81% 55%;
+    --primary-glow: 188 94% 58%;
 
-    /* Secondary: Aqua Green */
-    --secondary: 162 78% 49%;
+    /* Secondary: Electric Aqua */
+    --secondary: 162 100% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Accent: Navy Deep */
-    --accent: 201 77% 23%;
+    /* Accent: Deep Ocean */
+    --accent: 201 84% 15%;
     --accent-foreground: 0 0% 100%;
 
     /* Muted: Soft backgrounds */
@@ -46,21 +46,24 @@
     --input: 201 30% 92%;
     --ring: 201 81% 40%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Gradients */
+    /* Enhanced Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 50%, hsl(var(--secondary)) 100%);
     --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-vibrant: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--primary-glow)));
     
-    /* Shadows */
-    --shadow-elegant: 0 20px 40px -12px hsl(var(--primary) / 0.25);
-    --shadow-glow: 0 0 60px hsl(var(--primary-glow) / 0.3);
-    --shadow-card: 0 8px 32px hsl(var(--primary) / 0.1);
+    /* Enhanced Shadows */
+    --shadow-elegant: 0 25px 50px -12px hsl(var(--primary) / 0.35);
+    --shadow-glow: 0 0 80px hsl(var(--primary-glow) / 0.4);
+    --shadow-card: 0 10px 40px hsl(var(--primary) / 0.15);
+    --shadow-button: 0 8px 25px hsl(var(--primary) / 0.3);
 
-    /* Animations */
+    /* Smooth Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -138,26 +141,34 @@
     background: var(--gradient-card);
   }
 
-  /* Button Variants */
+  /* Enhanced Button Variants */
   .btn-hero {
-    @apply bg-primary hover:bg-primary-glow text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:scale-105;
+    @apply bg-gradient-to-r from-primary to-secondary hover:from-primary-glow hover:to-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold transition-all duration-500 hover:shadow-[var(--shadow-button)] hover:scale-110 transform active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105;
+    @apply bg-gradient-to-r from-secondary to-primary hover:from-secondary hover:to-secondary text-secondary-foreground px-6 py-3 rounded-xl font-medium transition-all duration-500 hover:scale-110 hover:shadow-[var(--shadow-glow)];
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105;
+    @apply border-2 border-primary text-primary hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-primary-foreground px-6 py-3 rounded-xl font-medium transition-all duration-500 hover:scale-110 hover:shadow-[var(--shadow-button)];
   }
 
-  /* Card Styles */
+  /* Enhanced Card Styles */
   .feature-card {
-    @apply bg-card border border-border rounded-xl p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-all duration-500 hover:scale-105 hover:-translate-y-2;
+    @apply bg-card border border-border rounded-2xl p-8 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-all duration-700 hover:scale-110 hover:-translate-y-3 cursor-pointer relative overflow-hidden;
+  }
+
+  .feature-card::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 transition-opacity duration-500;
+  }
+
+  .feature-card:hover::before {
+    @apply opacity-100;
   }
 
   .product-card {
-    @apply bg-card rounded-xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-all duration-500 hover:scale-105 cursor-pointer;
+    @apply bg-card rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-all duration-700 hover:scale-110 cursor-pointer transform hover:-translate-y-2 relative group;
   }
 
   /* Navigation Styles */
@@ -173,29 +184,38 @@
     @apply w-full;
   }
 
-  /* Section Backgrounds */
+  /* Enhanced Section Backgrounds */
   .section-gradient {
-    @apply bg-gradient-to-br from-background via-muted/30 to-background;
+    @apply bg-gradient-to-br from-background via-muted/40 to-background relative;
   }
 
-  /* Textile Pattern Background */
+  .section-gradient::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5;
+  }
+
+  /* Enhanced Textile Pattern Background */
   .textile-pattern {
     background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.08) 0%, transparent 60%),
+      linear-gradient(45deg, transparent 49%, hsl(var(--primary) / 0.02) 50%, transparent 51%);
   }
 
-  /* Animations */
+  /* Enhanced Animations */
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
   }
 
   .animate-fade-up {
-    animation: fadeUp 0.8s ease-out forwards;
+    animation: fadeUp 1s ease-out forwards;
   }
 
   .animate-slide-in {
-    animation: slideIn 0.6s ease-out forwards;
+    animation: slideIn 0.8s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
   }
 }
 
@@ -223,31 +243,46 @@ html {
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-30px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(-2deg);
   }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-40px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
   }
 }

@@ -47,34 +47,58 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
+        {/* Background Image with Enhanced Overlay */}
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
-            alt="Akhilesh Exports Manufacturing" 
-            className="w-full h-full object-cover"
+            alt="Akhilesh Exports Manufacturing Facility" 
+            className="w-full h-full object-cover scale-105 transition-transform duration-[10s] hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-secondary/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/80 to-secondary/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-accent/30 via-transparent to-transparent"></div>
         </div>
         
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full animate-float blur-sm"></div>
+          <div className="absolute bottom-32 right-16 w-24 h-24 bg-secondary/20 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-primary-glow/15 rounded-full animate-float" style={{animationDelay: '4s'}}></div>
+          <div className="absolute bottom-1/4 left-20 w-20 h-20 bg-white/8 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+        </div>
+        
+        {/* Enhanced Hero Content */}
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className="animate-fade-up">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white font-poppins mb-6">
-              Akhilesh Exports
+            <div className="mb-8">
+              <span className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-4 animate-pulse-glow">
+                🏭 Since 2000 • Premium Quality Manufacturing
+              </span>
+            </div>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white font-poppins mb-8 tracking-tight">
+              <span className="block">Akhilesh</span>
+              <span className="block bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                Exports
+              </span>
             </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-white/90 mb-4 font-medium">
-              Manufacturer & Exporters of Knitted Garments
+            <p className="text-2xl sm:text-3xl lg:text-4xl text-white/95 mb-6 font-medium">
+              World-Class Knitted Garments Manufacturer
             </p>
-            <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-              20+ Years of Excellence in Knitted Garments. Akhilesh Exports is a Tirupur-based knitted garment manufacturer and exporter, trusted by global brands for our quality and consistency. Leading textile manufacturer specializing in high-quality knitted garments for global markets. Committed to excellence, sustainability, and customer satisfaction.
+            <p className="text-lg sm:text-xl text-white/85 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Trusted by 50+ global brands • 20+ years of excellence • SMETA certified facility in Tirupur
+              <br className="hidden sm:block" />
+              Specializing in T-Shirts, Pull Overs, Sweat Shirts, and Premium Knitted Apparel
             </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link to="/products" className="btn-hero group flex items-center space-x-3">
+                <span>Explore Our Products</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+              </Link>
+              <Link to="/contact" className="btn-outline bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary">
+                Get Quote
+              </Link>
+            </div>
           </div>
         </div>
-
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-16 h-16 bg-secondary/20 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
       </section>
 
       {/* About Us Hint Section */}
@@ -222,25 +246,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Enhanced Stats Section */}
+      <section className="py-20 bg-gradient-to-r from-primary via-primary-glow to-secondary relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-40 h-40 bg-white/5 rounded-full animate-float"></div>
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/5 rounded-full animate-float" style={{animationDelay: '3s'}}></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-primary-foreground font-poppins mb-4">
+              Numbers That Speak Excellence
+            </h2>
+            <p className="text-xl text-primary-foreground/80">Our journey in numbers</p>
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div className="animate-fade-up">
-              <div className="text-4xl font-bold text-primary-foreground font-poppins mb-2">20+</div>
-              <div className="text-primary-foreground/80">Years Experience</div>
+            <div className="animate-fade-up feature-card bg-white/10 backdrop-blur-sm border-white/20">
+              <div className="text-5xl font-bold text-primary-foreground font-poppins mb-3">20+</div>
+              <div className="text-primary-foreground/90 font-medium">Years Experience</div>
             </div>
-            <div className="animate-fade-up" style={{animationDelay: '0.1s'}}>
-              <div className="text-4xl font-bold text-primary-foreground font-poppins mb-2">50+</div>
-              <div className="text-primary-foreground/80">Global Buyers</div>
+            <div className="animate-fade-up feature-card bg-white/10 backdrop-blur-sm border-white/20" style={{animationDelay: '0.1s'}}>
+              <div className="text-5xl font-bold text-primary-foreground font-poppins mb-3">50+</div>
+              <div className="text-primary-foreground/90 font-medium">Global Buyers</div>
             </div>
-            <div className="animate-fade-up" style={{animationDelay: '0.2s'}}>
-              <div className="text-4xl font-bold text-primary-foreground font-poppins mb-2">150000+</div>
-              <div className="text-primary-foreground/80">Month</div>
+            <div className="animate-fade-up feature-card bg-white/10 backdrop-blur-sm border-white/20" style={{animationDelay: '0.2s'}}>
+              <div className="text-5xl font-bold text-primary-foreground font-poppins mb-3">150K+</div>
+              <div className="text-primary-foreground/90 font-medium">Garments/Month</div>
             </div>
-            <div className="animate-fade-up" style={{animationDelay: '0.3s'}}>
-              <div className="text-4xl font-bold text-primary-foreground font-poppins mb-2">24/7</div>
-              <div className="text-primary-foreground/80">Quality Control</div>
+            <div className="animate-fade-up feature-card bg-white/10 backdrop-blur-sm border-white/20" style={{animationDelay: '0.3s'}}>
+              <div className="text-5xl font-bold text-primary-foreground font-poppins mb-3">24/7</div>
+              <div className="text-primary-foreground/90 font-medium">Quality Control</div>
             </div>
           </div>
         </div>
